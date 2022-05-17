@@ -1,38 +1,122 @@
-.App {
+:root {
+  --white: #fff;
+  --black: #000;
+  --primaryColor: #6E41E2;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
   text-align: center;
+  cursor: pointer;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button.primary {
+  border: none;
+  background-color: var(--primaryColor);
+  color: var(--white);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button.secondary {
+  border: 2px solid var(--primaryColor);
+  background-color: transparent;
+  color: var(--primaryColor);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button.circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-header {
+  background-color: var(--primaryColor);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--white);
+  height: 54px;
 }
 
-.App-link {
-  color: #61dafb;
+.dialog {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dialog.open {
+  display: flex;
 }
+
+.dialog.open .dialog-glassPane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .3);
+}
+
+.dialog-context {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 480px;
+  width: 90%;
+  border-radius: 8px;
+  padding: 30px 25px;
+  background-color: var(--white);
+  box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+  z-index: 100;
+}
+
+.dialog-header,
+.dialog-body,
+.dialog-footer {
+  display: flex;
+}
+
+.dialog-header {
+  justify-content: flex-end;
+}
+
+.dialog-body {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-body .dialog-message {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+.dialog-footer {
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.dialog-header button {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+
